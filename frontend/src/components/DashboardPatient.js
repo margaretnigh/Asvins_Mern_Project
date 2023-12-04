@@ -38,7 +38,7 @@ function Dashboard() {
             const newDoctors = [];
             // Use Promise.all to wait for all asynchronous operations to complete
             await Promise.all(userInfo.doctorsworked.map(async (doctorID) => {
-                const response = await fetch('http://localhost:3000/api/v1/doctors/' + doctorID, {
+                const response = await fetch('https://asvins.onrender.com/api/v1/doctors/' + doctorID, {
                     method: 'GET',
                     headers: { 'Content-Type': 'application/json' },
                 });
@@ -192,7 +192,7 @@ function Dashboard() {
         e.preventDefault();
         try {
             const token = getToken();
-            const response = await fetch(`http://localhost:3000/api/v1/patients/${userInfo._id}`, {
+            const response = await fetch(`https://asvins.onrender.com/api/v1/patients/${userInfo._id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json', Authorization: `Bearer ${token}`,

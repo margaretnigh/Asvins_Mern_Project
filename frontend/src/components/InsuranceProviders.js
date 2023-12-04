@@ -14,7 +14,7 @@ const InsuranceProviders = () => {
     const fetchInsurancePackages = async () => {
         try {
             const token = getToken();
-            const response = await fetch('http://localhost:3000/api/v1/patients/getAllInsurancePackages', {
+            const response = await fetch('https://asvins.onrender.com/api/v1/patients/getAllInsurancePackages', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

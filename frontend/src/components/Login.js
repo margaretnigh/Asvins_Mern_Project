@@ -57,11 +57,11 @@ const Login = () => {
             console.log("emailid: " + emailid);
             console.log("password: " + password);
             console.log("profileType: " + profileType.value);
-            console.log('http://localhost:3000' + apiUrl);
+            console.log('https://asvins.onrender.com' + apiUrl);
 
             const token = getToken();
             // POSTING FORM DATA ------------------------------
-            const response = await fetch('http://localhost:3000' + apiUrl, {
+            const response = await fetch('https://asvins.onrender.com' + apiUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
                 body: JSON.stringify({
@@ -106,7 +106,7 @@ const Login = () => {
             if (googleUser.metadata.creationTime === googleUser.metadata.lastSignInTime) {
                 navigate("/registergoogleuser");
             } else {
-                const response = await fetch('http://localhost:3000/api/v1/patients/loginPatient', {
+                const response = await fetch('https://asvins.onrender.com/api/v1/patients/loginPatient', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({

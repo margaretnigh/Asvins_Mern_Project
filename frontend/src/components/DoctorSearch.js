@@ -63,7 +63,7 @@ function DoctorSearch() {
         getUserLocation();
         const fetchDoctors = async () => {
           try {
-            const response = await fetch('http://localhost:3000/api/v1/doctors', {
+            const response = await fetch('https://asvins.onrender.com/api/v1/doctors', {
               method: 'GET',
               headers: { 'Content-Type': 'application/json' },
             });
@@ -110,7 +110,7 @@ function DoctorSearch() {
 
       if(userPosition){
         try {
-          const response = await fetch(`http://localhost:3000/api/v1/doctors/radius/${userPosition}/${searchRadius ? searchRadius : 10}`);
+          const response = await fetch(`https://asvins.onrender.com/api/v1/doctors/radius/${userPosition}/${searchRadius ? searchRadius : 10}`);
           const data = await response.json();
           const formattedDoctors = data.data
               .filter(

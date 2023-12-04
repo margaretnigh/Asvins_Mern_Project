@@ -35,7 +35,7 @@ const AppointmentForm = ({ userInfo, doctorsWorked }) => {
 
             appointmentsArray.push(formattedDate + ". " + `${formattedTime.slice(0,1)}` + ` ${parseInt(formattedTime.slice(0,1)) > 12 ? "AM" : "PM"}` + " EST");
 
-            const response = await fetch(`http://localhost:3000/api/v1/patients/${userInfo._id}`, {
+            const response = await fetch(`https://asvins.onrender.com/api/v1/patients/${userInfo._id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

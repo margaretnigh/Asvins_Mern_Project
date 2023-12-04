@@ -17,7 +17,7 @@ function DoctorSearch() {
     useEffect(() => {
         const fetchInsurance = async () => {
           try {
-            const response = await fetch('http://localhost:3000/api/v1/insuranceproviders', {
+            const response = await fetch('https://asvins.onrender.com/api/v1/insuranceproviders', {
               method: 'GET',
               headers: { 'Content-Type': 'application/json' },
             });

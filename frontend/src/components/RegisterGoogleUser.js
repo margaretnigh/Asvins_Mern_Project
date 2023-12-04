@@ -18,10 +18,10 @@ const RegisterGoogleUser = () => {
         if(phone !== '') {
             let apiUrl = '/api/v1/patients/createPatient'; // Default API endpoint
             
-            console.log('http://localhost:3000'+ apiUrl);
+            console.log('https://asvins.onrender.com'+ apiUrl);
 
             // POSTING FORM DATA ------------------------------
-            const response = await fetch('http://localhost:3000'+ apiUrl, {
+            const response = await fetch('https://asvins.onrender.com'+ apiUrl, {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({  fullname: user.displayName,
