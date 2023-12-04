@@ -4,8 +4,31 @@ const InsuranceProviders = () => {
     const [insurancePackages, setInsurancePackages] = useState([]);
     
     useEffect(() => {
+        const fetchInsurancePackages = async () => {
+            try {
+                const token = getToken();
+                const response = await fetch('https://asvins.onrender.com/api/v1/patients/getAllInsurancePackages', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+    
+                if (response.ok) {
+                    const data = await response.json();
+                    setInsurancePackages(data.data || []); // Make sure data.data is an array, or default to an empty array
+                } else {
+                    console.error('Failed to fetch insurance packages. Response:', response);
+                }
+            } catch (error) {
+                console.error('Error during fetch:', error);
+            }
+        };
+    
         fetchInsurancePackages();
-    }, []);
+    }, []); // Empty dependency array to run only once on mount
+    
 
     const getToken = () => {
         return localStorage.getItem('token');
