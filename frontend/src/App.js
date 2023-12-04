@@ -28,7 +28,7 @@ function App() {
               <Route path="/patient-dashboard" element={<Dashboard />} />
               <Route path="/enroll" element={<EnrollMFA />} />
               <Route path="/patient-dashboard/doctors" element={<DoctorSearch />} />
-              <Route path="/patient-dashboard/insurance-providers" element={<InsuranceSearch />} />
+              <Route path="/patient-dashboard/insurance-providers" element={<InsuranceProviders />} />
               <Route path="/patient-dashboard/appointments" element={<DashboardAppointments />} />
 
               <Route path="/doctor-dashboard" element={<DashboardDoctor />} />
