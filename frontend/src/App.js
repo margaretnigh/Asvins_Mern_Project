@@ -7,7 +7,7 @@ import './css/App.css';
 import Dashboard from './components/DashboardPatient.js';
 import { AuthContextProvider } from './context/AuthContext.js';
 import DoctorSearch from './components/DoctorSearch.js';
-import InsuranceSearch from './components/InsuranceSearch.js';
+import InsuranceProviders from './components/InsuranceProviders.js';
 import DashboardDoctor from './components/DashboardDoctor.js';
 import DashboardAppointments from './components/DashboardAppointments.js';
 import RegisterGoogleUser from './components/RegisterGoogleUser.js';
