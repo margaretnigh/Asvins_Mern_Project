@@ -86,7 +86,7 @@ function InsuranceProviders() {
         <div className="app">
             <div className="container">
                 <Sidebar user={user} />
-                <div className='container'>
+                <div className="content">
                     <div className="block">
                         <h4>Your Insurance</h4>
                         <p className="div">See your current insurance and chat with a provider.</p>
@@ -99,9 +99,9 @@ function InsuranceProviders() {
                                 <p><b>Start Date: </b>{userInfo.insurancePackage.startDate}<b> End Date: </b>{userInfo.insurancePackage.endDate}</p>
                                 <p><b>Deductible: </b>${userInfo.insurancePackage.deductible}<b>  ~  Copay: </b> ${userInfo.insurancePackage.copay}<b>  ~  Coverage Amount</b>  ${userInfo.insurancePackage.coverageAmount}</p>
                             </div>
-                        )};
+                        )}
                     </div>
-                    <div className="content">
+                    
                         <h3>Search for Insurance Providers</h3>
                         <p>Search for a insurance provider that will fit your needs.</p>
 
@@ -127,7 +127,6 @@ function InsuranceProviders() {
                         )))}
 
                     </div>
-                </div>
             </div>
         </div>
     )
