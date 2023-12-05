@@ -33,14 +33,21 @@ const Chat = () => {
         title: 'Patient',
     },];
 
+    sdk.join({
+        username: userInfo.fullname,
+        uniqueUserIdentifier: userInfo._id,
+    });
+
+    //sdk.sendPrivateMessage(message, conversationId);
+    //sdk.openConversation(conversationId);
+
     return (
         <div className="app">
             <div className="container">
                 <Sidebar user={user} />
                 <div className="container">
                     <div className="content">
-                        <h3>Search for Doctors</h3>
-                        <button onClick={() => logout()} id='logout-button'>Logout</button>
+                        <h3>Chat</h3>
                         <iframe id="chat-frame" src="https://deadsimplechat.com/6HIDIkC16" width="100%" height="600px"></iframe>
                     </div>
                 </div>
