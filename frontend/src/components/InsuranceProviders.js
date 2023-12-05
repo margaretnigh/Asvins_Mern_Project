@@ -88,7 +88,8 @@ function InsuranceProviders() {
                 <Sidebar user={user} />
                 <div className="content">
                     <div className="block">
-                        <h4>Your Insurance</h4>
+                        <h3>Welcome {userInfo.fullname}!</h3>
+                        <h3>View your Insurance Package</h3>
                         <p className="div">See your current insurance and chat with a provider.</p>
                         <h4>Insurance Package: </h4>
                         {userInfo.insurancePackage && (

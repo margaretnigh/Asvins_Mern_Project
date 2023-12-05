@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@tawk.to/tawk-messenger-react": "^2.0.2",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -15,6 +16,7 @@
     "react-calendar": "^4.6.1",
     "react-dom": "^18.2.0",
     "react-google-button": "^0.7.2",
+    "react-helmet": "^6.1.0",
     "react-phone-number-input": "^3.3.7",
     "react-router-dom": "^6.17.0",
     "react-scripts": "5.0.1",
