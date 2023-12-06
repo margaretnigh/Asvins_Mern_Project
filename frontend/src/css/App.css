@@ -1,3 +1,17 @@
+:root {
+  --wy-primary-99: #f7ffee;
+  --wy-primary-95: #cbffb8;
+  --wy-primary-90: #d1e5ff;
+  --wy-primary-80: #02e600;
+  --wy-primary-70: #03c700;
+  --wy-primary-60: #03a800;
+  --wy-primary-50: #038b00;
+  --wy-primary-40: #0073ff;
+  --wy-primary-30: #015300;
+  --wy-primary-20: #013a00;
+  --wy-primary-10: #002200;
+}
+
 body {
   font-family: 'DM Sans', sans-serif;
 }

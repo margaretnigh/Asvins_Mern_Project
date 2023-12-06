@@ -13,7 +13,7 @@ import DashboardAppointments from './components/DashboardAppointments.js';
 import RegisterGoogleUser from './components/RegisterGoogleUser.js';
 import InsuranceProviderPolicies from './components/InsuranceProviderPolicies.js';
 import DashboardInsuranceProvider from './components/DashboardInsuranceProvider.js';
-import Chat from './components/Chat.js';
+import UserChat from './components/UserChat.js';
 
 function App() {
   return (
@@ -31,7 +31,7 @@ function App() {
               <Route path="/patient-dashboard/doctors" element={<DoctorSearch />} />
               <Route path="/patient-dashboard/insurance-providers" element={<InsuranceProviders />} />
               <Route path="/patient-dashboard/appointments" element={<DashboardAppointments />} />
-              <Route path="/patient-dashboard/chat" element={<Chat />} />
+              <Route path="/patient-dashboard/chat" element={<UserChat />} />
 
               <Route path="/doctor-dashboard" element={<DashboardDoctor />} />
               <Route path="/doctor-dashboard/appointments" element={<DashboardAppointments />} />

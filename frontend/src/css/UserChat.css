@@ -1,0 +1,31 @@
+.wy-messenger-sidebar {
+    width: 30%;
+}
+
+.wy-messenger-provider {
+    height: 100%;
+}
+
+.wy-message-editor-text {
+    align-self: center;
+    border-radius: 6px;
+}
+
+.wy-readby-status>div>div {
+    background-color: white;
+}
+
+.wy-readby-status>div>div>span {
+    content: url("../images/checkmark.png");
+    background-color: white;
+    width: 18px;
+    height: 18px;
+}
+
+.content {
+    margin-left: 0 !important;
+}
+
+.chat {
+    height: 90%;
+}
