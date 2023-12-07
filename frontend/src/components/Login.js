@@ -132,12 +132,24 @@ const Login = () => {
     const firebaseLogIn = async () => {
         setErr("");
         if (user !== null) {
-            navigate("/patient-dashboard");
+            if(profileType.value === 'patient') {
+                navigate("/patient-dashboard");
+            } else if(profileType.value === 'insurance_provider') {
+                navigate("InsuranceProviderDashboard");
+            } else if (profileType.value === 'doctor') {
+                navigate("doctor-dashboard");
+            }
         } else {
             try {
                 logIn(emailid, password)
                     .then(function (userCredential) {
-                        navigate("/patient-dashboard");
+                        if(profileType.value === 'patient') {
+                            navigate("/patient-dashboard");
+                        } else if(profileType.value === 'insurance_provider') {
+                            navigate("InsuranceProviderDashboard");
+                        } else if (profileType.value === 'doctor') {
+                            navigate("doctor-dashboard");
+                        }
                     })
                     .catch(async function (error) {
                         if (error.code === 'auth/multi-factor-auth-required') {

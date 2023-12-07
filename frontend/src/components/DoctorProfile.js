@@ -4,8 +4,12 @@ import Location from "../images/location.svg";
 import Rating from "../images/star.svg";
 import Specialties from "../images/specialties.svg";
 
-function DoctorProfile({ image, name = 'Unknown', specialties = [], location = 'Unknown Location', rating}) {
-  return (
+function DoctorProfile({ image, name = 'Unknown', specialties = [], location = 'Unknown Location', rating, id, onButtonClick, button = true }) {
+    const handleButtonClick = () => {
+        onButtonClick(id);
+    };
+
+    return (
     <div className="profile-card-doc">
         <img src={image} alt="Profile Picture" className="profile-picture"/>
         <div className="profile-info">
@@ -33,6 +37,7 @@ function DoctorProfile({ image, name = 'Unknown', specialties = [], location = '
                 </div>
             </div>
         </div>
+        {button == true && <button className="button-small" onClick={handleButtonClick}>Add</button>}
     </div>
   );
 }

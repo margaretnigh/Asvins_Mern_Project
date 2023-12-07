@@ -35,9 +35,9 @@ const Register = () => {
 
             let apiUrl = '/api/v1/patients/createPatient'; // Default API endpoint
             // Check the value of formData.profileType and set the apiUrl accordingly
-            if (profileType === 'doctor') {
+            if (profileType.value === 'doctor') {
                 apiUrl = '/api/v1/doctors/createDoctor';
-            } else if (profileType === 'insurance_provider') {
+            } else if (profileType.value === 'insurance_provider') {
                 apiUrl = '/api/v1/insuranceproviders/createInsuranceProvider';
             }
             console.log('https://asvins.onrender.com'+ apiUrl);

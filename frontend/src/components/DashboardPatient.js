@@ -24,7 +24,7 @@ function Dashboard() {
 
     console.log(userInfo);
     const user = [{
-        image: userInfo.photo === 'no-photo.jpg' ? userIcon : userInfo.photo,
+        image: `backend/public/uploads/${userInfo.photo}` === 'no-photo.jpg' ? userIcon : userInfo.photo,
         name: userInfo.fullname,
         title: "Patient",
     },];
@@ -75,6 +75,7 @@ function Dashboard() {
             specialties: doctor.condition_support,
             location: doctor.address,
             rating: doctor.averageRating ? doctor.averageRating.toFixed(1) : "No Rating",
+            button: false,
         }));
 
     const formatDateTime = (dateTimeString) => {
@@ -110,7 +111,7 @@ function Dashboard() {
 
     const [dateCal, setDateCal] = useState(new Date());
 
-    var formattedAppointments =  [];
+    var formattedAppointments = [];
     if (doctors.length > 0) {
         formattedAppointments = appointments
             .map((appt) => {
@@ -228,6 +229,7 @@ function Dashboard() {
             setSuccessMessage('An unexpected error occurred. Please try again.');
             console.error('Error updating user data:', error);
         }
+        uploadPhoto();
     };
 
     // TestResults component
@@ -310,6 +312,42 @@ function Dashboard() {
             ...formData,
             conditions: selectedOptions.map(option => option.value),
         });
+    };
+
+    const [photo, setPhoto] = useState(null);
+
+    const handleFileChange = (e) => {
+        const selectedPhoto = e.target.files[0];
+        setPhoto(selectedPhoto);
+    };
+
+    //PUT /api/v1/patients/:id/photo
+    const uploadPhoto = async () => {
+        const token = getToken();
+
+        const formData = new FormData();
+        formData.append('file', photo);
+        try {
+        const response = await fetch(`https://asvins.onrender.com/api/v1/patients/${userInfo._id}/photo`, {
+          method: 'PUT',
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          body: formData,
+        });
+
+        console.log(photo);
+        console.log(response);
+      
+        // Handle the response as needed
+        if (response.ok) {
+            console.log('Photo uploaded successfully');
+          } else {
+            console.error('Failed to upload photo');
+          }
+        } catch (error) {
+          console.error('Error uploading photo:', error);
+        }
     };
 
     const transformedConditions = conditions.map(condition => ({
@@ -448,6 +486,13 @@ function Dashboard() {
                                     classNamePrefix="select"
                                     value={selectedConditions}
                                     onChange={handleOptionChange}
+                                />
+                                <label>User Profile Photo:</label>
+                                <input
+                                    type="file"
+                                    id="photo"
+                                    accept="image/*" // Allow only image files
+                                    onChange={handleFileChange}
                                 />
                                 <button className="button-small" style={{ marginTop: '10px' }} type="submit">Save</button>
                             </form>

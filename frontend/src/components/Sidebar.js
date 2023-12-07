@@ -36,7 +36,7 @@ function Sidebar({user}) {
             <ul className="sidebar-items">
                 <li><Link to="/patient-dashboard">Health</Link></li>
                 <li><Link to="/patient-dashboard/appointments">Appointments</Link></li>
-                <li><Link to="/patient-dashboard/chat">Chat</Link></li>
+                <li><Link to="/chat">Chat</Link></li>
                 <li><Link to="/patient-dashboard/doctors">Doctors</Link></li>
                 <li><Link to="/patient-dashboard/insurance-providers">Insurance</Link></li>
                 <button className='logout' onClick={handleLogout} style={{backgroundColor: '#e40000'}}>Logout</button>
