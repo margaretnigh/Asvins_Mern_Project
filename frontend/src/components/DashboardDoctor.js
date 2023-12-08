@@ -6,7 +6,6 @@ import Calender from "./Calendar";
 import Appointment from "./Appointment";
 import SidebarDoctor from "./SidebarDoctor";
 import { useLocation } from "react-router-dom";
-import axios from "axios";
 
 function DashboardDoctor() {
   const [appointments, setAppointments] = useState([]);
