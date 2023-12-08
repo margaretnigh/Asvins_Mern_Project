@@ -24,7 +24,7 @@ function Dashboard() {
 
     console.log(userInfo);
     const user = [{
-        image: `backend/public/uploads/${userInfo.photo}` === 'no-photo.jpg' ? userIcon : userInfo.photo,
+        image: `../backend/public/uploads/${userInfo.photo}` === 'no-photo.jpg' ? userIcon : userInfo.photo,
         name: userInfo.fullname,
         title: "Patient",
     },];
@@ -335,13 +335,11 @@ function Dashboard() {
           },
           body: formData,
         });
-
-        console.log(photo);
-        console.log(response);
-      
         // Handle the response as needed
         if (response.ok) {
             console.log('Photo uploaded successfully');
+            userInfo.photo = photo;
+            console.log("user photo" + userInfo.photo);
           } else {
             console.error('Failed to upload photo');
           }

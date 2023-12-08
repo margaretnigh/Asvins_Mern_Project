@@ -1,103 +1,118 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';  // Import axios
 import '../css/Dashboard.css';
 import '../css/Profile.css';
-import Profile from './Profile-Preview';
-import Calender from './Calendar';
-import Appointment from './Appointment';
+import Profile from './InsuranceProfile-Preview';
+import { UserAuth } from "../context/AuthContext";
 import InsuranceProviderSidebar from './InsuranceProviderSidebar';
-import MultiSelectForm from './MultiSelectForm';
-import { Link } from 'react-router-dom';
-import InsuranceProviderPolicies from './InsuranceProviderPolicies';
+import userIcon from "../images/userIcon.png";
 
-const DashboardInsuranceProvider = () => {
-    const [selectedPatient, setSelectedPatient] = useState(null);
-    const [updatedPolicy, setUpdatedPolicy] = useState('');
+// const user = [{
+//   image: 'https://placebear.com/200/300',
+//   name: 'Sumanth',
+//   title: 'Insurance Provider',
+// },];
 
-    const handleOpenPolicyModal = (patient) => {
-      setSelectedPatient(patient);
-      // Add logic to update insurance policy when the modal is opened
-      const updatedPolicyResult = updateInsurancePolicy(patient.id);
-      setUpdatedPolicy(updatedPolicyResult);
-    };
+function DashboardInsuranceProvider() {
 
-    const handleClosePolicyModal = () => {
-      setSelectedPatient(null);
-      setUpdatedPolicy('');
-    };
+  // const { userInfo, changeUserInfo } = UserAuth();
+  // console.log("user: " + userInfo.fullname);
+  // console.log("user: " + userInfo.emailid);
+  // console.log("user: " + userInfo._id);
+  // console.log("Doctors worked: " + userInfo.patientsworked);
 
-    const handleUpdatePolicy = () => {
-      // Implement your logic to update the policy here
-      console.log(`Updating policy for patient: ${selectedPatient.name}`);
-      handleClosePolicyModal(); // Close the modal after updating the policy
-    };
+  // console.log(userInfo, changeUserInfo);
+  // const user = [{
+  //     image: userInfo.photo === 'no-photo.jpg' ? userIcon : userInfo.photo,
+  //     name: userInfo.fullname,
+  //     title: "Patient",
+  // },];
 
-    const user = [{
-        image: 'http://placekitten.com/g/200/300',
-        name: 'Sumanth',
-        title: 'Insurance Provider',
-    },];
-    
-    const patients = [{
-        id: 1,
-        image: 'http://placekitten.com/g/200/300',
-        name: 'John Doe',
-        title: 'Covid-19 Pediatrics',
-        pastRecord: 'flu',
-        policy: 'None'
-        },
-        {
-            id: 2,
-            image: 'http://placekitten.com/g/200/300',
-            name: 'Jane Smith',
-            title: 'Cardiologist',
-            pastRecord: 'heart attack',
-            policy: 'None'
-        },
-    ];
-    
-    // Function to update insurance policy based on past health record
-    function updateInsurancePolicy(patientId) {
-      const patient = patients.find(p => p.id === patientId);
-    
-      if (!patient) {
-        console.log('Patient not found');
-        return;
+  const [patients, setPatients] = useState([]);
+  const [selectedPatient, setSelectedPatient] = useState(null);
+  const [updatedPolicy, setUpdatedPolicy] = useState('');
+
+  // useEffect(() => {
+  //   const fetchPatients = async () => {
+  //     try {
+  //       const response = await axios.get('https://asvins.onrender.com/api/v1/patients');
+  //       console.log('API Response:', response);
+  //       setPatients(response.data.data);
+  //     } catch (error) {
+  //       console.error('Error fetching patient data:', error);
+  //     }
+  //   };
+  
+  //   fetchPatients(); // Call the function when the component mounts
+  // }, []); // Empty dependency array means this effect runs once after the initial render
+  
+  // console.log("hii")
+  // console.log(patients)
+
+  const { userInfo, changeUserInfo } = UserAuth();
+  console.log("user: " + userInfo.fullname);
+  console.log("user: " + userInfo.emailid);
+  console.log("user: " + userInfo._id);
+  console.log("Doctors worked: " + userInfo.patientsworked);
+
+  console.log(userInfo);
+  const user = [{
+      image: `backend/public/uploads/${userInfo.photo}` === 'no-photo.jpg' ? userIcon : userInfo.photo,
+      name: userInfo.fullname,
+      title: "Patient",
+  },];
+
+  const [patient, setpatients] = useState([]);
+  // const [insuranceProviders, setInsuranceProviders] = useState([]);
+  // const [appointments, setAppointments] = useState([]);
+
+  const getPatients = async () => {
+      try {
+          const newPatients = [];
+          // Use Promise.all to wait for all asynchronous operations to complete
+          await Promise.all(userInfo.patientsworked.map(async (patientID) => {
+              const response = await fetch('https://asvins.onrender.com/api/v1/patients/', {
+                  method: 'GET',
+                  headers: { 'Content-Type': 'application/json' },
+              });
+              console.log("HERE AGAIN", patientID);
+
+              if (!response.ok) {
+                  console.log('Network response was not ok');
+              } else {
+                  const data = await response.json();
+                  console.log("DATA: ", data);
+                  newPatients.push(data.data);
+              }
+          }));
+
+          setPatients(newPatients);
+
+      } catch (e) {
+          console.error(e);
       }
-    
-      console.log(`Updating insurance policy for ${patient.name} based on past health record: ${patient.pastRecord}`);
-    
-      switch (patient.pastRecord.toLowerCase()) {
-        case 'flu':
-          console.log('Recommendation: Consider bronze or silver policy');
-          patient.policy = "bronze or silver policy"
-          return 'Recommendation: Consider bronze or silver policy';
-        case 'heart attack':
-          console.log('Recommendation: Consider gold or platinum policy');
-          patient.policy = "gold or platinum policy"
-          return 'Recommendation: Consider gold or platinum policy';
-        default:
-          console.log('No specific recommendation for this past health record');
-          return 'No specific recommendation for this past health record';
-      }
-    }
-    
-    const insurance = [{
-        image: 'http://placekitten.com/g/200/300',
-        name: 'John Doe',
-        title: 'Aetna Insurance Agent',
-    },];
-    
-    const appointments = [{
-        time: '2:30 PM',
-        date: 'September 20th, 2023', 
-        doctor: 'Dr. John Doe', 
-        address: '600 N Eagleson Ave',
-        photo: 'http://placekitten.com/g/200/300'
-    },];
+  };
+  useEffect(() => {
 
-    console.log("LOADING");
+    getPatients();
+    // if (userInfo.appointments) {
+    //     setAppointments(userInfo.appointments);
+    // }
+}, [userInfo]);
+  const handleClosePolicyModal = () => {
+    setSelectedPatient(null);
+    setUpdatedPolicy('');
+  };
 
-    return (
+  const handleUpdatePolicy = () => {
+    // Implement your logic to update the policy here
+    console.log(`Updating policy for patient: ${selectedPatient.name}`);
+    handleClosePolicyModal(); // Close the modal after updating the policy
+  };
+
+  return (
+    <div className="app">
       <div className="container">
         <InsuranceProviderSidebar user={user} />
         <div className="container">
@@ -107,34 +122,18 @@ const DashboardInsuranceProvider = () => {
             <div className="block">
               <h4>Your Patients</h4>
               <p className="div">See your current patients and their insurance plans according to their health records.</p>
-              {patients.map((patient, index) => (
-                <div key={index} className="patient-entry">
-                  <Profile style={{ marginTop: '20px' }}  {...patient} />
-                  <div className="update-policy-button">
-                    <button onClick={() => handleOpenPolicyModal(patient)}>Update Policy</button>
-                  </div>
-                </div>
-              ))}
-              <div style={{ textAlign: 'right' }}>
-                <Link to="./patients">
-                  <button style={{ marginTop: '20px' }} className="button-small">Find a patient</button>
-                </Link>
-              </div>
+              <Profile {...userInfo}/>
             </div>
-            {/* <div className="block">
-              <h4>Your Health</h4>
-              <p>Edit your healthcare information</p>
-              <MultiSelectForm options={options} />
-              <MultiSelectForm options={options} />
-            </div> */}
           </div>
         </div>
         <div className="content">
-          <Calender />
-          {appointments.map((appointment, index) => (
-            <Appointment key={index} {...appointment} />
-          ))}
+          <div className="covid-updates-button-container">
+            <Link to="/covid-updates">
+              <button className="button-large covid-updates-button">View COVID-19 Updates</button>
+            </Link>
+          </div>
         </div>
+      </div>
 
       {/* Modal for updating policy */}
       {selectedPatient && (
@@ -149,9 +148,9 @@ const DashboardInsuranceProvider = () => {
             {/* Add your form or UI elements for updating the policy */}
             <button onClick={handleUpdatePolicy}>Update Policy</button>
           </div>
-          </div>
+        </div>
       )}
-      </div>
+    </div>
   );
 }
 

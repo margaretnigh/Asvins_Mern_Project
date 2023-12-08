@@ -1,0 +1,83 @@
+.covid-updates-page {
+    text-align: center;
+    padding: 20px;
+  }
+
+  .jumbotron {
+    background-color: #000000; 
+    padding: 50px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: white; /* Set the text color to white */
+  }
+
+
+  .display-4 {
+    color: #343a40;
+  }
+
+  .white {
+    color: #ffffff;
+  }
+
+  .data-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+
+  .data-item {
+    background-color: #ffffff; 
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+  }
+
+  .data-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #343a40;
+  }
+
+  .data-value {
+    color: #e44d26; 
+    font-size: 1.5em;
+  }
+
+  .news-heading {
+    color: #e44d26; 
+    font-size: 2.5em;
+    margin-bottom: 20px;
+  }
+
+  .news-item {
+    background-color: #fa9687; 
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+    display: block; /* This makes each news item stack vertically */
+  }
+
+
+  .news-item:hover {
+    background-color: #add8e6; 
+  }
+
+  .card-body {
+    color: #343a40; 
+  }
+
+  .card-title {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+
+  .card-text {
+    color: #555; 
+  }
+

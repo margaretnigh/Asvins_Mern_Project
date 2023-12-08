@@ -1,19 +1,30 @@
+import React from 'react';
 import "../css/Profile.css";
 import { Link } from 'react-router-dom';
 
+function InsuranceProfile_Preview({ patientsworked, fullname, emailid, phone, title, policy, profile_link, insurancePackage }) {
+  const randomImageURL = `https://picsum.photos/200/300?random=${Math.floor(Math.random() * 1000)}`;
 
-function Insurance_Profile_Preview({ image, name, title, policy, profile_link }) {
+  const insuranceProvider = insurancePackage ? insurancePackage.insuranceProvider : '';
+  const policyNumber = insurancePackage ? insurancePackage.policyNumber : '';
+  const coverageType = insurancePackage ? insurancePackage.coverageType : '';
+  const coverageAmount = insurancePackage ? insurancePackage.coverageAmount : '';
+
   return (
     <Link to={profile_link}>
-    <div className="profile-card">
-        <img src={image} alt="Profile Picture" className="profile-picture" style={{ marginTop: '20px' }}/>
+      <div className="profile-card" style={{ marginTop: '20px' }}>
         <div className="profile-info">
-            <div className="profile-name">{name}</div>
-            <div className="profile-description">{title}</div>
-            <div className="profile-description">{policy}</div>
+          {randomImageURL && <img src={randomImageURL} alt="Profile Picture" className="profile-picture" />}
+
+          {patientsworked && <div className="profile-name"><p>Patient ID: {patientsworked}</p></div>}
+          {insuranceProvider && <div className="profile-description">Insurance Provider: {insuranceProvider}</div>}
+          {policyNumber && <div className="profile-description">Policy Number: {policyNumber}</div>}
+          {emailid && <div className="profile-description">Email: {emailid}</div>}
+          {phone && <div className="profile-description">Phone: {phone}</div>}
         </div>
-    </div>
+      </div>
     </Link>
-      );
-    }
-export default Insurance_Profile_Preview;
+  );
+}
+
+export default InsuranceProfile_Preview;

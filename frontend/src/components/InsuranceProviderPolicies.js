@@ -1,10 +1,11 @@
 import React from 'react';
 import "../css/Dashboard.css";
 import "../css/Profile.css";
+
 import InsuranceProviderSidebar from './InsuranceProviderSidebar';
 
 
-const InsuranceProviderPolicies = () => {
+function InsuranceProviderPolicies(){
     const user = [{
         image: 'http://placekitten.com/g/200/300',
         name: 'Sumanth',
@@ -63,7 +64,6 @@ const InsuranceProviderPolicies = () => {
                                 </ul>
                                 <strong>Good choice if:</strong> You want a low-cost way to protect yourself from worst-case medical scenarios.
                                 <br /><br />
-
                                 <h4><strong>Silver</strong></h4>
                                 <ul>
                                 <li><strong>Moderate</strong> monthly premium. </li>
@@ -75,8 +75,6 @@ const InsuranceProviderPolicies = () => {
                                 </ul>
                                 <strong>Good choice if:</strong> You qualify for “extra savings” — or, if not, if you are willing to pay a slightly higher monthly premium than Bronze to have more of your routine care covered.
                                 <br /><br />
-
-
                                 <h4><strong>Gold</strong></h4>
                                 <ul>
                                 <li><strong>High</strong> monthly premium. </li>
@@ -108,7 +106,7 @@ const InsuranceProviderPolicies = () => {
             </div>
             </div>
     )
-
+    
     }
 
 export default InsuranceProviderPolicies
