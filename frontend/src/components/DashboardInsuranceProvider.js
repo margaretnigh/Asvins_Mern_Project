@@ -60,7 +60,7 @@ function DashboardInsuranceProvider() {
   const user = [{
       image: `backend/public/uploads/${userInfo.photo}` === 'no-photo.jpg' ? userIcon : userInfo.photo,
       name: userInfo.fullname,
-      title: "Patient",
+      title: "Insurance Provider",
   },];
 
   const [patient, setpatients] = useState([]);
