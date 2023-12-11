@@ -37,9 +37,7 @@ const InsuranceProviderSidebar = ({user}) => {
             <ul className="sidebar-items">
                 <li><Link to="/InsuranceProviderDashboard">Home</Link></li>
                 <li><Link to="/InsuranceProviderDashboard/policies">Policy Packages and Management</Link></li>
-                <li><Link to="/InsuranceProviderDashboard/claimsManagment">Claims Management</Link></li>
-                <li><Link to="/InsuranceProviderDashboard/chat">Chat</Link></li>
-                <li><Link to="/InsuranceProviderDashboard/doctors">Doctors</Link></li>
+                <li><Link to="/InsuranceProviderDashboard/insurance-chat">Chat</Link></li>
                 <button className='logout' onClick={handleLogout} style={{backgroundColor: '#e40000'}}>Logout</button>
             </ul>
             </div>

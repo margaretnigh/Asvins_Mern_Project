@@ -15,6 +15,8 @@ import RegisterGoogleUser from './components/RegisterGoogleUser.js';
 import InsuranceProviderPolicies from './components/InsuranceProviderPolicies.js';
 import InsuranceProviderDashboard from './components/DashboardInsuranceProvider.js';
 import UserChat from './components/UserChat.js';
+import DoctorChat from './components/DoctorChat.js';
+import InsuranceChat from './components/InsuranceChat.js';
 import DoctorAppointments from './components/DoctorAppointments.js';
 import CovidUpdatesPage from './components/CovidUpdatesPage';
 
@@ -42,10 +44,12 @@ function App() {
               <Route path="/doctor-dashboard/appointments" element={<DashboardAppointments />} />
               <Route path="/doctor-dashboard/doctors" element={<PatientSearch />} />
               <Route path="/doctor-dashboard" element={<DashboardDoctor/>}/>
+              <Route path="/doctor-dashboard/doctor-chat" element={<DoctorChat/>}/>
 
               <Route path="/InsuranceProviderDashboard" element={<InsuranceProviderDashboard />} />
               <Route path="/InsuranceProviderDashboard/policies" element={<InsuranceProviderPolicies />} />
               <Route path="/covid-updates" element={<CovidUpdatesPage />} />
+              <Route path="/InsuranceProviderDashboard/insurance-chat" element={<InsuranceChat/>} />
 
             </Routes>
           </AuthContextProvider>

@@ -45,7 +45,7 @@ function SidebarDoctor({doc, appointments}) {
                     doc
                 }
                 }>Appointments</Link></li>
-                <li><Link to="/chat">Chat</Link></li>
+                <li><Link to="/doctor-dashboard/doctor-chat">Chat</Link></li>
                 {/* <li><Link to="/dashboard/doctors">Doctors</Link></li> */}
                 <button className='logout' onClick={handleLogout} style={{backgroundColor: '#e40000'}}>Logout</button>
             </ul>

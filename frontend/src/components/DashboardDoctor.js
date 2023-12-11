@@ -13,7 +13,7 @@ function DashboardDoctor() {
   const [patients, setPatients] = useState([]);
 
   const loc = useLocation();
-  const doc = loc.state.doctor;
+  const doc = loc.state === null ? (<p>Please login again</p>) : loc.state.doctor;
   console.log(doc);
 
   const generateDummyPatients = () => {
